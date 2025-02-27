@@ -14,14 +14,17 @@ class Logger:
 
     @classmethod
     def info(cls, message):
+
         logger.info(message)
 
 
     @classmethod
     def warn(cls, message):
+
         logger.warning(message)
 
 
     @classmethod
     def err(cls, message):
+
         logger.error(message)

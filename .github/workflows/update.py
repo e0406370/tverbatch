@@ -1,5 +1,5 @@
-from helpers.actions import get_element_attribute, get_element_text, make_webdriver, wait_element_visible
 from helpers.constants import Tver
+from helpers.driver import Driver
 from helpers.locators import Locators
 from helpers.utils import re
 
@@ -10,16 +10,16 @@ import pytz
 # Updates details in TEST_EPISODE
 def update_test_episode():
 
-    with make_webdriver() as driver:
+    with Driver():
 
-        driver.get(Tver.get_series_url(Tver.TEST_SERIES["valid"]["id"]))
+        Driver.get_instance().get(Tver.get_series_url(Tver.TEST_SERIES["valid"]["id"]))
 
-        wait_element_visible(driver, Locators.EPISODE_ROW)
+        Driver.wait_element_visible(Locators.EPISODE_ROW)
 
-        episode_id = get_element_attribute(driver, Locators.EPISODE_ROW, "href").partition("episodes/")[2]
-        episode_title = get_element_text(driver, Locators.EPISODE_ROW_TITLE)
-        episode_broadcast_date = get_element_text(driver, Locators.EPISODE_ROW_BROADCAST_DATE)
-        episode_end_date = get_element_text(driver, Locators.EPISODE_ROW_END_DATE)
+        episode_id = Driver.get_element_attribute(Locators.EPISODE_ROW, "href").partition("episodes/")[2]
+        episode_title = Driver.get_element_text(Locators.EPISODE_ROW_TITLE)
+        episode_broadcast_date = Driver.get_element_text(Locators.EPISODE_ROW_BROADCAST_DATE)
+        episode_end_date = Driver.get_element_text(Locators.EPISODE_ROW_END_DATE)
 
     with open("helpers/constants.py", "r", encoding="utf-8") as file:
         contents = file.read()
