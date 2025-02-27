@@ -41,16 +41,30 @@ def render_tver_series(series: str) -> bool:
 
 
 def filter_tver() -> None:
-    
+
     Driver.click_element_loc(Locators.TERMS_MODAL)
     Driver.zoom_browser()
-    
+
     filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
+    filter_size = len(filter_options)
     filter_lines = "\n".join((f'{idx + 1}. {opt.text}' for idx, opt in enumerate(filter_options)))
 
-    Logger.info(f"Filter options: \n{filter_lines}")
-    given_input = int(input("Type the number to filter by that option"))
-    
+    Logger.info(f"Available filter options: \n{filter_lines}")
+    while True:
+        given_input = input(f"Please enter the number corresponding to your chosen filter option (1-{filter_size}): ")
+
+        try:
+            given_input = int(given_input)
+            
+            if 1 <= given_input <= filter_size:
+                break
+            
+            else:
+                Logger.err(f"Invalid input: Please choose a number between 1 and {filter_size}.")
+
+        except ValueError:
+            Logger.err(f"Invalid input: Please enter a valid number.")
+
     Driver.click_element_ele(filter_options[given_input - 1])
 
 
