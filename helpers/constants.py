@@ -10,10 +10,10 @@ class Tver:
     
     TEST_EPISODE = {
         "valid": {
-            "id": "ep4z0uumnm",
-            "title": "#1153「屋久島の山姫（前編）」",
-            "broadcast": "2月15日(土)放送分",
-            "end": "2月22日(土)17:59 終了予定"
+            "id": "ep0mnciv96",
+            "title": "#1154「屋久島の山姫（後編）」",
+            "broadcast": "2月22日(土)放送分",
+            "end": "3月1日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
