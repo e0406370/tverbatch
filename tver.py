@@ -35,7 +35,19 @@ def render_tver_series(series: str) -> bool:
 
     Driver.wait_element_visible(Locators.EPISODE_LIST)
 
+    filter_tver()
+
     return True
+
+
+def filter_tver() -> None:
+    
+    Driver.click_element(Locators.TERMS_MODAL)
+    Driver.zoom_browser()
+    
+    filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
+    for opt in filter_options:
+        Logger.info(opt.text)
 
 
 def scrape_tver() -> None:

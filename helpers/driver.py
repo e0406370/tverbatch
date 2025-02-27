@@ -4,6 +4,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -76,24 +77,36 @@ class Driver:
 
 
     @classmethod
+    def get_element(cls, locator: Locator) -> WebElement:
+
+        return cls._instance.find_element(*locator)
+
+
+    @classmethod
+    def get_elements(cls, locator: Locator) -> list[WebElement]:
+
+        return cls._instance.find_elements(*locator)
+
+
+    @classmethod
     def get_element_text(cls, locator: Locator) -> str:
 
-        return cls._instance.find_element(*locator).text
+        return cls.get_element(locator).text
 
 
     @classmethod
     def get_element_attribute(cls, locator: Locator, attribute: str) -> str:
 
-        return cls._instance.find_element(*locator).get_attribute(attribute)
-    
+        return cls.get_element(locator).get_attribute(attribute)
+
 
     @classmethod
     def click_element(cls, locator: Locator) -> None:
-        
+
         actions = ActionChains(cls._instance)
-        
+
         cls.wait_element_visible(locator)
-        ele = cls._instance.find_element(*locator)
+        ele = cls.get_element(locator)
 
         actions.move_to_element(ele)
         actions.click(ele)
@@ -102,5 +115,5 @@ class Driver:
 
     @classmethod
     def zoom_browser(cls, zoom_level: int = 75) -> None:
-        
+
         cls._instance.execute_script(f"document.body.style.zoom='{zoom_level}%'")
