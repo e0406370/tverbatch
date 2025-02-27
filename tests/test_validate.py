@@ -36,7 +36,7 @@ def test_validate_links_episodes_valid_id():
 
 
 # [validate_links][episodes] Mix of valid and invalid links
-def test_validate_links_episodes_valid_invalid(capsys):
+def test_validate_links_episodes_valid_invalid(caplog):
 
     links = [
         VALID_EPISODE_URL,
@@ -46,7 +46,7 @@ def test_validate_links_episodes_valid_invalid(capsys):
 
     assert validate_links(links).get_all() == expected, "[episodes] validate_links should capture valid links but not invalid links"
 
-    output = capsys.readouterr().out
+    output = caplog.text
 
     for link in set(links).difference(expected):
         assert Messages.WARNING_INVALID_URL_ID % link in output, "[episodes] Expected warning message for invalid link"
@@ -77,7 +77,7 @@ def test_validate_links_series_valid_id():
 
 
 # [validate_links][series] Mix of valid and invalid links
-def test_validate_links_series_valid_invalid(capsys):
+def test_validate_links_series_valid_invalid(caplog):
 
     links = [
         VALID_SERIES_URL_1,
@@ -87,7 +87,7 @@ def test_validate_links_series_valid_invalid(capsys):
 
     assert validate_links(links).get_all() == expected, "[series] validate_links should capture valid links but not invalid links"
 
-    output = capsys.readouterr().out
+    output = caplog.text
 
     for link in set(links).difference(expected):
         assert Messages.WARNING_INVALID_URL_ID % link in output, "[series] Expected warning message for invalid link"
@@ -118,7 +118,7 @@ def test_validate_links_mixed_valid_id():
 
 
 # [validate_links][mixed] Mix of valid and invalid links
-def test_validate_links_mixed_valid_invalid(capsys):
+def test_validate_links_mixed_valid_invalid(caplog):
 
     episodes = [
         VALID_EPISODE_URL,
@@ -145,14 +145,14 @@ def test_validate_links_mixed_valid_invalid(capsys):
 
     assert validate_links(links).get_all() == expected, "[mixed] validate_links should capture valid links but not invalid links"
 
-    output = capsys.readouterr().out
+    output = caplog.text
 
     for link in invalid:
         assert Messages.WARNING_INVALID_URL_ID % link in output, "[mixed] Expected warning message for invalid link"
 
 
 # [validate_links] Only invalid links
-def test_validate_links_invalid_only(capsys):
+def test_validate_links_invalid_only(caplog):
 
     links = [
         INVALID_URL,
@@ -162,7 +162,7 @@ def test_validate_links_invalid_only(capsys):
 
     assert validate_links(links).get_all() == expected, "validate_links should not capture any invalid links (both URL and ID formats)"
 
-    output = capsys.readouterr().out
+    output = caplog.text
 
     for link in links:
         assert Messages.WARNING_INVALID_URL_ID % link in output, "Expected warning message for invalid link"
