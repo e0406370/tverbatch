@@ -94,17 +94,18 @@ class Messages:
         https://github.com/e0406370/tverbatch
     """
 
-    WARNING_INVALID_URL_ID = "Warning: Invalid URL/ID skipped - %s"
-    WARNING_NO_VALID_LINKS = "Warning: No valid links were found. Please provide at least one valid episode or series link."
+    WARNING_INVALID_URL_ID = "Invalid URL/ID skipped - %s"
+    WARNING_NO_VALID_LINKS = "No valid links were found. Please provide at least one valid episode or series link."
 
-    ERROR_INVALID_EPISODE_ID = "Error: The provided episode ID is invalid!"
-    ERROR_INVALID_SERIES_ID = "Error: The provided series ID is invalid!"
-    ERROR_NOT_AIRING_SERIES = "Error: This series is currently not airing!"
+    ERROR_INVALID_EPISODE_ID = "The provided episode ID is invalid!"
+    ERROR_INVALID_SERIES_ID = "The provided series ID is invalid!"
+    ERROR_NOT_AIRING_SERIES = "This series is currently not airing!"
 
-    PROCESS_EPISODE = "\nProcessing episode %s"
+    PROCESS_EPISODE = "Processing episode %s"
     PROCESS_EPISODE_COMPLETE = "Added to batch file."
-    PROCESS_SERIES = "\nProcessing series %s"
-    PROCESS_DOWNLOAD = "\nStarting download..."
+    PROCESS_SERIES = "Processing series %s"
+    PROCESS_DOWNLOAD = "Starting download..."
 
-    SCRIPT_EXIT = "\nExiting script..."
-    SCRIPT_COMPLETE = "\nScript completed."
+    SCRIPT_START = "Starting script..."
+    SCRIPT_EXIT = "Exiting script..."
+    SCRIPT_COMPLETE = "Script completed."

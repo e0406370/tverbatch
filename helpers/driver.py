@@ -41,7 +41,7 @@ class Driver:
     def make_webdriver(cls) -> WebDriver:
 
         opt = Options()
-        # opt.add_argument("--headless")  # activates the browser in the background
+        opt.add_argument("--headless")  # activates the browser in the background
         opt.add_argument("--log-level=2")  # suppresses TensorFlow-related messages
 
         driver = webdriver.Chrome(options=opt)

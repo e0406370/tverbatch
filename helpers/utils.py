@@ -1,8 +1,9 @@
 import re, sys
-from helpers.classes import Links
 from helpers.constants import Tver, Messages
+from helpers.logger import Logger
+from helpers.models import Links
 
- 
+
 def validate_links(links: list[str]) -> Links:
 
     valid_episodes = []
@@ -27,7 +28,7 @@ def validate_links(links: list[str]) -> Links:
             valid_series.append(Tver.get_series_url(link))
 
         else:
-            print(Messages.WARNING_INVALID_URL_ID % link)
+            Logger.warn(Messages.WARNING_INVALID_URL_ID % link)
 
     return Links(valid_episodes, valid_series)
 
@@ -50,5 +51,5 @@ def reset_batch() -> None:
 
 def exit_script() -> None:
 
-    print(Messages.SCRIPT_EXIT)
+    Logger.info(Messages.SCRIPT_EXIT)
     sys.exit(1)
