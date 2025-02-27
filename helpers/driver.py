@@ -2,6 +2,7 @@ from helpers.locators import Locator
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -45,6 +46,7 @@ class Driver:
         opt.add_argument("--log-level=2")  # suppresses TensorFlow-related messages
 
         driver = webdriver.Chrome(options=opt)
+        driver.maximize_window()
         return driver
 
 
@@ -83,3 +85,22 @@ class Driver:
     def get_element_attribute(cls, locator: Locator, attribute: str) -> str:
 
         return cls._instance.find_element(*locator).get_attribute(attribute)
+    
+
+    @classmethod
+    def click_element(cls, locator: Locator) -> None:
+        
+        actions = ActionChains(cls._instance)
+        
+        cls.wait_element_visible(locator)
+        ele = cls._instance.find_element(*locator)
+
+        actions.move_to_element(ele)
+        actions.click(ele)
+        actions.perform()
+
+
+    @classmethod
+    def zoom_browser(cls, zoom_level: int = 75) -> None:
+        
+        cls._instance.execute_script(f"document.body.style.zoom='{zoom_level}%'")

@@ -1,5 +1,5 @@
 from helpers.constants import ClassNames
-from helpers.utils import css_selector_class_starts_with
+from helpers.utils import css_selector_class_starts_with, css_selector_class_contains_button
 from selenium.webdriver.common.by import By
 
 Locator = tuple[By, str]
@@ -12,9 +12,24 @@ class Locators:
         css_selector_class_starts_with(ClassNames.ERROR_MODAL),
     )
 
+    TERMS_MODAL: Locator = (
+        By.CSS_SELECTOR,
+        css_selector_class_contains_button(ClassNames.TERMS_MODAL)
+    )
+
     LOAD_ICON: Locator = (
         By.CSS_SELECTOR,
         css_selector_class_starts_with(ClassNames.LOAD_ICON),
+    )
+
+    FILTER_LIST: Locator = (
+        By.CSS_SELECTOR,
+        css_selector_class_starts_with(ClassNames.FILTER_LIST),
+    )
+    
+    FILTER_BUTTON: Locator = (
+        By.CSS_SELECTOR,
+        css_selector_class_contains_button(ClassNames.FILTER_BUTTON),
     )
 
     SERIES_TITLE: Locator = (

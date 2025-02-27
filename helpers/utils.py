@@ -43,6 +43,11 @@ def css_selector_class_starts_with(class_name: str) -> str:
     return f"[class^='{class_name}']"
 
 
+def css_selector_class_contains_button(class_name: str) -> str:
+    
+    return f"button[class*='{class_name}']"
+
+
 def reset_batch() -> None:
 
     with open(Tver.BATCH_FILE, "w+"):

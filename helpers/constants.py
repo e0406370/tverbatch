@@ -62,7 +62,11 @@ class Tver:
 
 class ClassNames:
     ERROR_MODAL = "error-modal_message"
+    TERMS_MODAL = "terms-modal_button"
     LOAD_ICON = "loading_box"
+    
+    FILTER_LIST = "season-filter_buttonList"
+    FILTER_BUTTON = "season-filter_button"
 
     SERIES_TITLE = "series-main_title"
     SERIES_DESCRIPTION = "description_container"
