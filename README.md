@@ -4,6 +4,8 @@ This command-line tool retrieves episode links from one or more series currently
 
 ## Requirements
 
+Note: This script requires at least **Python 3.9**.
+
 Assuming the CLI is in the **`tverbatch`** directory, install all required dependencies by running:
 
 ```sh
