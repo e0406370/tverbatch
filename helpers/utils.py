@@ -45,7 +45,6 @@ def css_selector_class_starts_with(class_name: str) -> str:
 
 def reset_batch() -> None:
 
-    Logger.info(Messages.SCRIPT_START)
     with open(Tver.BATCH_FILE, "w+"):
         pass
 

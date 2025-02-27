@@ -94,6 +94,8 @@ def download_tver(simulate=False) -> None:
 
 if __name__ == "__main__":
 
+    Logger.info(Messages.SCRIPT_START)
+
     reset_batch()
 
     if len(sys.argv) < 2:
