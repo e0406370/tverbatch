@@ -8,39 +8,39 @@ from bs4 import BeautifulSoup
 import yt_dlp
 
 
-def render_tver_episode(driver, episode):
-    
-    driver.get(episode)
+def render_tver_episode(episode: str) -> bool:
 
-    if is_element_visible(driver, Locators.ERROR_MODAL):
-        print(Messages.ERROR_INVALID_EPISODE_ID)
+    Driver.get_instance().get(episode)
+
+    if Driver.is_element_visible(Locators.ERROR_MODAL):
+        Logger.err(Messages.ERROR_INVALID_EPISODE_ID)
         return False
 
     return True
 
 
-def render_tver_series(driver, series):
+def render_tver_series(series: str) -> bool:
 
-    driver.get(series)
+    Driver.get_instance().get(series)
 
-    if is_element_visible(driver, Locators.ERROR_MODAL):
-        print(Messages.ERROR_INVALID_SERIES_ID)
+    if Driver.is_element_visible(Locators.ERROR_MODAL):
+        Logger.err(Messages.ERROR_INVALID_SERIES_ID)
         return False
 
-    wait_element_invisible(driver, Locators.LOAD_ICON)
+    Driver.wait_element_invisible(Locators.LOAD_ICON)
 
-    if is_element_visible(driver, Locators.EPISODE_LIST_EMPTY):
-        print(Messages.ERROR_NOT_AIRING_SERIES)
+    if Driver.is_element_visible(Locators.EPISODE_LIST_EMPTY):
+        Logger.err(Messages.ERROR_NOT_AIRING_SERIES)
         return False
 
-    wait_element_visible(driver, Locators.EPISODE_LIST)
+    Driver.wait_element_visible(Locators.EPISODE_LIST)
 
     return True
 
 
-def scrape_tver(driver):
+def scrape_tver() -> None:
 
-    html = driver.page_source
+    html = Driver.get_instance().page_source
     soup = BeautifulSoup(html, "html.parser")
 
     series_title = soup.select_one(css_selector_class_starts_with(ClassNames.SERIES_TITLE)).get_text()
@@ -64,21 +64,21 @@ def scrape_tver(driver):
         if (href := episode_container.get("href")) and "episodes" in href
     ]
 
-    print(f"{series_title} [{len(episodes)}]")
-    print("\n".join(str(epi) for epi in episodes))
+    Logger.info(f"{series_title} [{len(episodes)}]")
+    for epi in episodes: Logger.info(str(epi))
 
     with open(Tver.BATCH_FILE, "a+") as output:
         for epi in episodes:
             output.write(f"{epi.episode_link}\n")
 
 
-def download_tver(simulate=False):
+def download_tver(simulate=False) -> None:
 
     with open(Tver.BATCH_FILE, "r+") as input:
         links = input.readlines()
         
     if not links:
-        print(Messages.WARNING_NO_VALID_LINKS)
+        Logger.warn(Messages.WARNING_NO_VALID_LINKS)
         exit_script()
 
     ydl_opts = {
@@ -88,41 +88,43 @@ def download_tver(simulate=False):
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        print(Messages.PROCESS_DOWNLOAD)
+        Logger.info(Messages.PROCESS_DOWNLOAD)
         ydl.download(links)
 
 
 if __name__ == "__main__":
 
+    Logger.info(Messages.SCRIPT_START)
+
     reset_batch()
 
     if len(sys.argv) < 2:
-        print(Messages.USAGE)
+        Logger.info(Messages.USAGE)
         exit_script()
 
     links = validate_links(sys.argv[1:])
 
     if not links.episodes and not links.series:
-        print(Messages.WARNING_NO_VALID_LINKS)
+        Logger.warn(Messages.WARNING_NO_VALID_LINKS)
         exit_script()
 
     if links.episodes:
-        with make_webdriver() as driver, open(Tver.BATCH_FILE, "a+") as output:
+        with Driver(), open(Tver.BATCH_FILE, "a+") as output:
             for episode in links.episodes:
-                print(Messages.PROCESS_EPISODE % episode)
+                Logger.info(Messages.PROCESS_EPISODE % episode)
                 
-                if render_tver_episode(driver, episode):
+                if render_tver_episode(episode):
                     output.write(f"{episode}\n")
-                    print(Messages.PROCESS_EPISODE_COMPLETE)
+                    Logger.info(Messages.PROCESS_EPISODE_COMPLETE)
 
     if links.series:
-        with make_webdriver() as driver:
+        with Driver():
             for series in links.series:
-                print(Messages.PROCESS_SERIES % series)
+                Logger.info(Messages.PROCESS_SERIES % series)
 
-                if render_tver_series(driver, series):
-                    scrape_tver(driver)
+                if render_tver_series(series):
+                    scrape_tver()
 
     download_tver()
 
-    print(Messages.SCRIPT_COMPLETE)
+    Logger.info(Messages.SCRIPT_COMPLETE)

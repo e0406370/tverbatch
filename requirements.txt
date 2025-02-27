@@ -4,6 +4,6 @@
 # 2. Confirm that these dependencies are installed by executing:
 #   pip show beautifulsoup4 selenium yt-dlp
 
-beautifulsoup4>=4.12.3
-selenium>=4.27.1
-yt-dlp>=2024.12.13
+beautifulsoup4>=4.13.3
+selenium>=4.29.0
+yt-dlp>=2025.2.19
