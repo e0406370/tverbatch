@@ -42,12 +42,16 @@ def render_tver_series(series: str) -> bool:
 
 def filter_tver() -> None:
     
-    Driver.click_element(Locators.TERMS_MODAL)
+    Driver.click_element_loc(Locators.TERMS_MODAL)
     Driver.zoom_browser()
     
     filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
-    for opt in filter_options:
-        Logger.info(opt.text)
+    filter_lines = "\n".join((f'{idx + 1}. {opt.text}' for idx, opt in enumerate(filter_options)))
+
+    Logger.info(f"Filter options: \n{filter_lines}")
+    given_input = int(input("Type the number to filter by that option"))
+    
+    Driver.click_element_ele(filter_options[given_input - 1])
 
 
 def scrape_tver() -> None:

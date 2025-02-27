@@ -101,12 +101,22 @@ class Driver:
 
 
     @classmethod
-    def click_element(cls, locator: Locator) -> None:
+    def click_element_loc(cls, loc: Locator) -> None:
 
         actions = ActionChains(cls._instance)
 
-        cls.wait_element_visible(locator)
-        ele = cls.get_element(locator)
+        cls.wait_element_visible(loc)
+        ele = cls.get_element(loc)
+
+        actions.move_to_element(ele)
+        actions.click(ele)
+        actions.perform()
+
+
+    @classmethod
+    def click_element_ele(cls, ele: WebElement) -> None:
+
+        actions = ActionChains(cls._instance)
 
         actions.move_to_element(ele)
         actions.click(ele)
