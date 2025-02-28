@@ -42,8 +42,9 @@ def render_tver_series(series: str) -> bool:
 
 def filter_tver() -> None:
 
-    Driver.click_element_loc(Locators.TERMS_MODAL)
-    Driver.zoom_browser()
+    if Driver.is_element_visible(Locators.TERMS_MODAL):
+        Driver.click_element_loc(Locators.TERMS_MODAL)
+        Driver.zoom_browser()
 
     filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
     filter_size = len(filter_options)

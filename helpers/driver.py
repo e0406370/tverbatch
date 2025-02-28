@@ -105,7 +105,6 @@ class Driver:
 
         actions = ActionChains(cls._instance)
 
-        cls.wait_element_visible(loc)
         ele = cls.get_element(loc)
 
         actions.move_to_element(ele)
