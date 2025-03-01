@@ -10,7 +10,7 @@ import yt_dlp
 
 def render_tver_episode(episode: str) -> bool:
 
-    Driver.get_instance().get(episode)
+    Driver.access_url(episode)
 
     if Driver.is_element_visible(Locators.ERROR_MODAL):
         Logger.err(Messages.ERR_INVALID_EPISODE_ID)
@@ -19,9 +19,9 @@ def render_tver_episode(episode: str) -> bool:
     return True
 
 
-def render_tver_series(series: str) -> bool:
+def render_tver_series(series: str, skip_filter: bool = False) -> bool:
 
-    Driver.get_instance().get(series)
+    Driver.access_url(series)
 
     if Driver.is_element_visible(Locators.ERROR_MODAL):
         Logger.err(Messages.ERR_INVALID_SERIES_ID)
@@ -35,14 +35,14 @@ def render_tver_series(series: str) -> bool:
 
     Driver.wait_element_visible(Locators.EPISODE_LIST)
 
-    filter_tver()
+    filter_tver(skip_filter)
 
     return True
 
 
-def filter_tver(skip=False) -> None:
+def filter_tver(skip_filter: bool = False) -> None:
 
-    if skip: return
+    if skip_filter: return
 
     filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
     filter_size = len(filter_options)
@@ -109,7 +109,7 @@ def scrape_tver() -> None:
             output.write(f"{epi.episode_link}\n")
 
 
-def download_tver(simulate=False) -> None:
+def download_tver(simulate: bool = False) -> None:
 
     with open(Tver.BATCH_FILE, "r+") as input:
         links = input.readlines()

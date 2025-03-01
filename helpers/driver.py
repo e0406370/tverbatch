@@ -52,6 +52,13 @@ class Driver:
 
 
     @classmethod
+    def access_url(cls, url: str) -> None:
+
+        if cls._instance.current_url != url:
+            cls._instance.get(url)
+
+
+    @classmethod
     def is_element_visible(cls, locator: Locator, timeout: float = 2) -> bool:
 
         try:
