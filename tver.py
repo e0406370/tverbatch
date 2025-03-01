@@ -40,7 +40,9 @@ def render_tver_series(series: str) -> bool:
     return True
 
 
-def filter_tver() -> None:
+def filter_tver(skip=False) -> None:
+
+    if skip: return
 
     filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
     filter_size = len(filter_options)
