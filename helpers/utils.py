@@ -28,7 +28,7 @@ def validate_links(links: list[str]) -> Links:
             valid_series.append(Tver.get_series_url(link))
 
         else:
-            Logger.warn(Messages.WARNING_INVALID_URL_ID % link)
+            Logger.warn(Messages.WARN_INVALID_URL_ID % link)
 
     return Links(valid_episodes, valid_series)
 

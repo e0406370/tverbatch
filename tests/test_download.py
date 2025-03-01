@@ -26,5 +26,5 @@ def test_download_tver_without_link(caplog):
     with pytest.raises(SystemExit) as exc_info:
         download_tver(simulate=True)
 
-    assert Messages.WARNING_NO_VALID_LINKS in caplog.text, "Expected warning message when no valid links are present in the batch file"
+    assert Messages.WARN_NO_VALID_LINKS in caplog.text, "Expected warning message when no valid links are present in the batch file"
     assert exc_info.value.code == 1, "download_tver should exit with code 1 when no links are found"

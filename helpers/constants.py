@@ -98,12 +98,18 @@ class Messages:
         https://github.com/e0406370/tverbatch
     """
 
-    WARNING_INVALID_URL_ID = "Invalid URL/ID skipped - %s"
-    WARNING_NO_VALID_LINKS = "No valid links were found. Please provide at least one valid episode or series link."
+    WARN_INVALID_URL_ID = "Invalid URL/ID skipped - %s"
+    WARN_NO_VALID_LINKS = "No valid links were found. Please provide at least one valid episode or series link."
 
-    ERROR_INVALID_EPISODE_ID = "The provided episode ID is invalid!"
-    ERROR_INVALID_SERIES_ID = "The provided series ID is invalid!"
-    ERROR_NOT_AIRING_SERIES = "This series is currently not airing!"
+    ERR_INVALID_EPISODE_ID = "The provided episode ID is invalid!"
+    ERR_INVALID_SERIES_ID = "The provided series ID is invalid!"
+    ERR_NOT_AIRING_SERIES = "This series is currently not airing!"
+
+    ERR_INVALID_INPUT_OUT_OF_RANGE = "Invalid input: Please select a number between 1 and %s."
+    ERR_INVALID_INPUT_NOT_A_NUMBER = "Invalid input: Please enter a valid number."
+
+    FILTER_OPTIONS = "Available filter options: \n%s"
+    FILTER_PROMPT = "Please enter the number corresponding to your chosen filter option (1-%s): "
 
     PROCESS_EPISODE = "Processing episode %s"
     PROCESS_EPISODE_COMPLETE = "Added to batch file."

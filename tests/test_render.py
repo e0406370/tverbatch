@@ -25,7 +25,7 @@ def test_render_tver_invalid_episode(caplog):
     episode_url = Tver.get_episode_url(Tver.TEST_EPISODE["invalid"]["id"])
     render_status = render_tver_episode(episode_url)
 
-    assert Messages.ERROR_INVALID_EPISODE_ID in caplog.text, "Expected error message for invalid episode"
+    assert Messages.ERR_INVALID_EPISODE_ID in caplog.text, "Expected error message for invalid episode"
     assert render_status is False, "render_tver_episode should return False for invalid episode"
     
 
@@ -44,7 +44,7 @@ def test_render_tver_invalid_series(caplog):
     series_url = Tver.get_series_url(Tver.TEST_SERIES["invalid"]["id"])
     render_status = render_tver_series(series_url)
 
-    assert Messages.ERROR_INVALID_SERIES_ID in caplog.text, "Expected error message for invalid series"
+    assert Messages.ERR_INVALID_SERIES_ID in caplog.text, "Expected error message for invalid series"
     assert render_status is False, "render_tver_series should return False for invalid series"
 
 
@@ -54,5 +54,5 @@ def test_render_tver_not_airing_series(caplog):
     series_url = Tver.get_series_url(Tver.TEST_SERIES["not_airing"]["id"])
     render_status = render_tver_series(series_url)
 
-    assert Messages.ERROR_NOT_AIRING_SERIES in caplog.text, "Expected error message for not airing series"
+    assert Messages.ERR_NOT_AIRING_SERIES in caplog.text, "Expected error message for not airing series"
     assert render_status is False, "render_tver_series should return False for not airing series"

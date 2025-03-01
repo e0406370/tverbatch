@@ -49,7 +49,7 @@ def test_validate_links_episodes_valid_invalid(caplog):
     output = caplog.text
 
     for link in set(links).difference(expected):
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "[episodes] Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in output, "[episodes] Expected warning message for invalid link"
 
 
 # [validate_links][series] Valid links in URL format
@@ -90,7 +90,7 @@ def test_validate_links_series_valid_invalid(caplog):
     output = caplog.text
 
     for link in set(links).difference(expected):
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "[series] Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in output, "[series] Expected warning message for invalid link"
 
 
 # [validate_links][mixed] Valid links in URL format
@@ -148,7 +148,7 @@ def test_validate_links_mixed_valid_invalid(caplog):
     output = caplog.text
 
     for link in invalid:
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "[mixed] Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in output, "[mixed] Expected warning message for invalid link"
 
 
 # [validate_links] Only invalid links
@@ -165,4 +165,4 @@ def test_validate_links_invalid_only(caplog):
     output = caplog.text
 
     for link in links:
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in output, "Expected warning message for invalid link"
