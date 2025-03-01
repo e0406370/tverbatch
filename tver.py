@@ -10,32 +10,69 @@ import yt_dlp
 
 def render_tver_episode(episode: str) -> bool:
 
-    Driver.get_instance().get(episode)
+    Driver.access_url(episode)
 
     if Driver.is_element_visible(Locators.ERROR_MODAL):
-        Logger.err(Messages.ERROR_INVALID_EPISODE_ID)
+        Logger.err(Messages.ERR_INVALID_EPISODE_ID)
         return False
 
     return True
 
 
-def render_tver_series(series: str) -> bool:
+def render_tver_series(series: str, skip_filter: bool = False) -> bool:
 
-    Driver.get_instance().get(series)
+    Driver.access_url(series)
 
     if Driver.is_element_visible(Locators.ERROR_MODAL):
-        Logger.err(Messages.ERROR_INVALID_SERIES_ID)
+        Logger.err(Messages.ERR_INVALID_SERIES_ID)
         return False
 
     Driver.wait_element_invisible(Locators.LOAD_ICON)
 
     if Driver.is_element_visible(Locators.EPISODE_LIST_EMPTY):
-        Logger.err(Messages.ERROR_NOT_AIRING_SERIES)
+        Logger.err(Messages.ERR_NOT_AIRING_SERIES)
         return False
 
     Driver.wait_element_visible(Locators.EPISODE_LIST)
 
+    filter_tver(skip_filter)
+
     return True
+
+
+def filter_tver(skip_filter: bool = False) -> None:
+
+    if skip_filter: return
+
+    filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
+    filter_size = len(filter_options)
+
+    if filter_size <= 2:
+        Logger.info(Messages.FILTER_SKIP)
+        return
+
+    if Driver.is_element_visible(Locators.TERMS_MODAL):
+        Driver.click_element_loc(Locators.TERMS_MODAL)
+        Driver.zoom_browser()
+
+    filter_lines = "\n".join((f'{idx + 1}. {opt.text}' for idx, opt in enumerate(filter_options)))
+    Logger.info(Messages.FILTER_OPTIONS % filter_lines)
+
+    while True:
+        given_input = input(Messages.FILTER_PROMPT % filter_size)
+
+        try:
+            given_input = int(given_input)
+
+            if 1 <= given_input <= filter_size:
+                break
+            else:
+                Logger.err(Messages.ERR_INVALID_INPUT_OUT_OF_RANGE % filter_size)
+
+        except ValueError:
+            Logger.err(Messages.ERR_INVALID_INPUT_NOT_A_NUMBER)
+
+    Driver.click_element_ele(filter_options[given_input - 1])
 
 
 def scrape_tver() -> None:
@@ -72,13 +109,13 @@ def scrape_tver() -> None:
             output.write(f"{epi.episode_link}\n")
 
 
-def download_tver(simulate=False) -> None:
+def download_tver(simulate: bool = False) -> None:
 
     with open(Tver.BATCH_FILE, "r+") as input:
         links = input.readlines()
-        
+ 
     if not links:
-        Logger.warn(Messages.WARNING_NO_VALID_LINKS)
+        Logger.warn(Messages.WARN_NO_VALID_LINKS)
         exit_script()
 
     ydl_opts = {
@@ -105,7 +142,7 @@ if __name__ == "__main__":
     links = validate_links(sys.argv[1:])
 
     if not links.episodes and not links.series:
-        Logger.warn(Messages.WARNING_NO_VALID_LINKS)
+        Logger.warn(Messages.WARN_NO_VALID_LINKS)
         exit_script()
 
     if links.episodes:

@@ -7,7 +7,7 @@ class Tver:
 
     VALID_SERIES_URL = r"https?://(?:www\.)?tver\.jp/series/(sr[a-z0-9]{8})"
     VALID_SERIES_ID = r"sr[a-z0-9]{8}"
-    
+
     TEST_EPISODE = {
         "valid": {
             "id": "ep9jlq0ouu",
@@ -27,8 +27,8 @@ class Tver:
             "name": "名探偵コナン"
         },
         "valid_2": {
-            "id": "srtsxzl3si", 
-            "name": "ドラえもん"
+            "id": "srg9lxbziz", 
+            "name": "ドラゴンボールDAIMA"
         },
         "invalid": {
             "id": "sr12345678",
@@ -50,6 +50,9 @@ class Tver:
 
     TOTAL_CHAR_1 = "全"
     TOTAL_CHAR_2 = "件"
+    
+    FILTER_OPTION_ALL = "1. すべて"
+    FILTER_OPTION_MAIN = "2. 本編"
 
     @classmethod
     def get_episode_url(cls, episode_id: str) -> str:
@@ -62,7 +65,12 @@ class Tver:
 
 class ClassNames:
     ERROR_MODAL = "error-modal_message"
+    TERMS_MODAL = "terms-modal_button"
     LOAD_ICON = "loading_box"
+
+    FILTER_LIST = "season-filter_buttonList"
+    FILTER_BUTTON = "season-filter_button"
+    FILTER_BUTTON_ACTIVE = "season-filter_active"
 
     SERIES_TITLE = "series-main_title"
     SERIES_DESCRIPTION = "description_container"
@@ -94,12 +102,19 @@ class Messages:
         https://github.com/e0406370/tverbatch
     """
 
-    WARNING_INVALID_URL_ID = "Invalid URL/ID skipped - %s"
-    WARNING_NO_VALID_LINKS = "No valid links were found. Please provide at least one valid episode or series link."
+    WARN_INVALID_URL_ID = "Invalid URL/ID skipped - %s"
+    WARN_NO_VALID_LINKS = "No valid links were found. Please provide at least one valid episode or series link."
 
-    ERROR_INVALID_EPISODE_ID = "The provided episode ID is invalid!"
-    ERROR_INVALID_SERIES_ID = "The provided series ID is invalid!"
-    ERROR_NOT_AIRING_SERIES = "This series is currently not airing!"
+    ERR_INVALID_EPISODE_ID = "The provided episode ID is invalid!"
+    ERR_INVALID_SERIES_ID = "The provided series ID is invalid!"
+    ERR_NOT_AIRING_SERIES = "This series is currently not airing!"
+
+    ERR_INVALID_INPUT_OUT_OF_RANGE = "Invalid input: Please select a number between 1 and %s."
+    ERR_INVALID_INPUT_NOT_A_NUMBER = "Invalid input: Please enter a valid number."
+
+    FILTER_SKIP = "Skipping filter selection: Only default options are available."
+    FILTER_OPTIONS = "Available filter options: \n%s"
+    FILTER_PROMPT = "Please enter the number corresponding to your chosen filter option (1-%s): "
 
     PROCESS_EPISODE = "Processing episode %s"
     PROCESS_EPISODE_COMPLETE = "Added to batch file."

@@ -46,10 +46,10 @@ def test_validate_links_episodes_valid_invalid(caplog):
 
     assert validate_links(links).get_all() == expected, "[episodes] validate_links should capture valid links but not invalid links"
 
-    output = caplog.text
+    captured = caplog.text
 
     for link in set(links).difference(expected):
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "[episodes] Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in captured, "[episodes] Expected warning message for invalid link"
 
 
 # [validate_links][series] Valid links in URL format
@@ -87,10 +87,10 @@ def test_validate_links_series_valid_invalid(caplog):
 
     assert validate_links(links).get_all() == expected, "[series] validate_links should capture valid links but not invalid links"
 
-    output = caplog.text
+    captured = caplog.text
 
     for link in set(links).difference(expected):
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "[series] Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in captured, "[series] Expected warning message for invalid link"
 
 
 # [validate_links][mixed] Valid links in URL format
@@ -145,10 +145,10 @@ def test_validate_links_mixed_valid_invalid(caplog):
 
     assert validate_links(links).get_all() == expected, "[mixed] validate_links should capture valid links but not invalid links"
 
-    output = caplog.text
+    captured = caplog.text
 
     for link in invalid:
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "[mixed] Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in captured, "[mixed] Expected warning message for invalid link"
 
 
 # [validate_links] Only invalid links
@@ -162,7 +162,7 @@ def test_validate_links_invalid_only(caplog):
 
     assert validate_links(links).get_all() == expected, "validate_links should not capture any invalid links (both URL and ID formats)"
 
-    output = caplog.text
+    captured = caplog.text
 
     for link in links:
-        assert Messages.WARNING_INVALID_URL_ID % link in output, "Expected warning message for invalid link"
+        assert Messages.WARN_INVALID_URL_ID % link in captured, "Expected warning message for invalid link"

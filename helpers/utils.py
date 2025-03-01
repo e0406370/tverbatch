@@ -28,7 +28,7 @@ def validate_links(links: list[str]) -> Links:
             valid_series.append(Tver.get_series_url(link))
 
         else:
-            Logger.warn(Messages.WARNING_INVALID_URL_ID % link)
+            Logger.warn(Messages.WARN_INVALID_URL_ID % link)
 
     return Links(valid_episodes, valid_series)
 
@@ -41,6 +41,11 @@ def compile_pattern(pattern: str) -> re.Pattern[str]:
 def css_selector_class_starts_with(class_name: str) -> str:
 
     return f"[class^='{class_name}']"
+
+
+def css_selector_class_contains_button(class_name: str) -> str:
+
+    return f"button[class*='{class_name}']"
 
 
 def reset_batch() -> None:

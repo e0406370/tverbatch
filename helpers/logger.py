@@ -1,10 +1,10 @@
 import logging
 
-handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
-
 formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
+
+handler = logging.StreamHandler()
 handler.setFormatter(formatter)
+handler.setLevel(logging.INFO)
 
 logging.basicConfig(handlers=[handler], level=logging.INFO)
 logger = logging.getLogger(__name__)

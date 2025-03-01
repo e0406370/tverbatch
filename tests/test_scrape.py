@@ -1,25 +1,23 @@
 from helpers import Driver, Tver, Locators
 from helpers import reset_batch
 from tver import render_tver_series, scrape_tver
-import logging, pytest
+import pytest
 
 
 @pytest.fixture(scope="session", autouse=True)
 def shared_driver():
 
     with Driver():
-        pass
+        yield
 
 
 @pytest.fixture
 def setup_tver(caplog):
 
-    caplog.set_level(logging.INFO)
-
     series_url = Tver.get_series_url(Tver.TEST_SERIES["valid"]["id"])
 
     reset_batch()
-    render_tver_series(series_url)
+    render_tver_series(series_url, skip_filter=True)
     scrape_tver()
 
     return caplog.text
