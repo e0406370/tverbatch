@@ -84,6 +84,13 @@ class Driver:
 
 
     @classmethod
+    def wait_element_has_class(cls, element: WebElement, class_name: str, timeout: float = 10) -> None:
+
+        wait = WebDriverWait(cls._instance, timeout)
+        wait.until(lambda _: class_name in element.get_attribute("class"))
+
+
+    @classmethod
     def get_element(cls, locator: Locator) -> WebElement:
 
         return cls._instance.find_element(*locator)

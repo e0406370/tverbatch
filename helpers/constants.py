@@ -27,8 +27,8 @@ class Tver:
             "name": "名探偵コナン"
         },
         "valid_2": {
-            "id": "srtsxzl3si", 
-            "name": "ドラえもん"
+            "id": "srg9lxbziz", 
+            "name": "ドラゴンボールDAIMA"
         },
         "invalid": {
             "id": "sr12345678",
@@ -50,6 +50,9 @@ class Tver:
 
     TOTAL_CHAR_1 = "全"
     TOTAL_CHAR_2 = "件"
+    
+    FILTER_OPTION_ALL = "1. すべて"
+    FILTER_OPTION_MAIN = "2. 本編"
 
     @classmethod
     def get_episode_url(cls, episode_id: str) -> str:
@@ -67,6 +70,7 @@ class ClassNames:
 
     FILTER_LIST = "season-filter_buttonList"
     FILTER_BUTTON = "season-filter_button"
+    FILTER_BUTTON_ACTIVE = "season-filter_active"
 
     SERIES_TITLE = "series-main_title"
     SERIES_DESCRIPTION = "description_container"
