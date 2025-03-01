@@ -42,15 +42,20 @@ def render_tver_series(series: str) -> bool:
 
 def filter_tver() -> None:
 
+    filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
+    filter_size = len(filter_options)
+
+    if filter_size <= 2:
+        Logger.info(Messages.FILTER_SKIP)
+        return
+
     if Driver.is_element_visible(Locators.TERMS_MODAL):
         Driver.click_element_loc(Locators.TERMS_MODAL)
         Driver.zoom_browser()
 
-    filter_options = Driver.get_elements(Locators.FILTER_BUTTON)
-    filter_size = len(filter_options)
     filter_lines = "\n".join((f'{idx + 1}. {opt.text}' for idx, opt in enumerate(filter_options)))
-
     Logger.info(Messages.FILTER_OPTIONS % filter_lines)
+
     while True:
         given_input = input(Messages.FILTER_PROMPT % filter_size)
 
@@ -59,7 +64,6 @@ def filter_tver() -> None:
 
             if 1 <= given_input <= filter_size:
                 break
-
             else:
                 Logger.err(Messages.ERR_INVALID_INPUT_OUT_OF_RANGE % filter_size)
 

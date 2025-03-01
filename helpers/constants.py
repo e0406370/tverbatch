@@ -108,6 +108,7 @@ class Messages:
     ERR_INVALID_INPUT_OUT_OF_RANGE = "Invalid input: Please select a number between 1 and %s."
     ERR_INVALID_INPUT_NOT_A_NUMBER = "Invalid input: Please enter a valid number."
 
+    FILTER_SKIP = "Skipping filter selection: Only default options are available."
     FILTER_OPTIONS = "Available filter options: \n%s"
     FILTER_PROMPT = "Please enter the number corresponding to your chosen filter option (1-%s): "
 
