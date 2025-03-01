@@ -26,7 +26,7 @@ class Locators:
         By.CSS_SELECTOR,
         css_selector_class_starts_with(ClassNames.FILTER_LIST),
     )
-    
+
     FILTER_BUTTON: Locator = (
         By.CSS_SELECTOR,
         css_selector_class_contains_button(ClassNames.FILTER_BUTTON),

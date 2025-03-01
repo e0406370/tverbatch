@@ -44,7 +44,7 @@ def css_selector_class_starts_with(class_name: str) -> str:
 
 
 def css_selector_class_contains_button(class_name: str) -> str:
-    
+
     return f"button[class*='{class_name}']"
 
 

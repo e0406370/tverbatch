@@ -107,7 +107,7 @@ def download_tver(simulate=False) -> None:
 
     with open(Tver.BATCH_FILE, "r+") as input:
         links = input.readlines()
-        
+ 
     if not links:
         Logger.warn(Messages.WARN_NO_VALID_LINKS)
         exit_script()

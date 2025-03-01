@@ -7,7 +7,7 @@ class Tver:
 
     VALID_SERIES_URL = r"https?://(?:www\.)?tver\.jp/series/(sr[a-z0-9]{8})"
     VALID_SERIES_ID = r"sr[a-z0-9]{8}"
-    
+
     TEST_EPISODE = {
         "valid": {
             "id": "ep0mnciv96",
@@ -64,7 +64,7 @@ class ClassNames:
     ERROR_MODAL = "error-modal_message"
     TERMS_MODAL = "terms-modal_button"
     LOAD_ICON = "loading_box"
-    
+
     FILTER_LIST = "season-filter_buttonList"
     FILTER_BUTTON = "season-filter_button"
 

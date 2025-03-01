@@ -2,7 +2,7 @@ class Links:
     def __init__(self, episodes: list[str], series: list[str]):
         self.episodes = episodes
         self.series = series
-        
+
     def get_all(self) -> list[str]:
         return [*self.episodes, *self.series]
 
