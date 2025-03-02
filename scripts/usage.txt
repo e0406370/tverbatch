@@ -1,0 +1,13 @@
+1. clear_cache.sh
+
+= CLI must be in tverbatch directory.
+= $ bash scripts/clear_cache.sh
+= clears all cache directories (__pycache__ and .pytest_cache) present in the tverbatch directory.
+
+2. clear_downloads.sh
+
+= CLI should be in tverbatch directory.
+= $ bash scripts/clear_downloads.sh
+= clears all files present in the downloads folder.
+= note that if CLI is in the parent directory and the script is activated via $ bash tverbatch/scripts/clear_downloads.sh, 
+= it will clear the downloads folder in the parent directory if it was previously created.
