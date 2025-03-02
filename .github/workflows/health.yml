@@ -1,0 +1,30 @@
+name: Check tver.jp is reachable
+
+on:
+  workflow_call:
+
+  workflow_dispatch:
+
+jobs:
+  run-update-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run the health script
+        run: |
+          export PYTHONPATH=$GITHUB_WORKSPACE
+          python .github/workflows/health.py
