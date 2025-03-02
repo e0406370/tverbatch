@@ -8,7 +8,7 @@ import pytz
 
 
 # Updates details in TEST_EPISODE
-def update_test_episode():
+def update_test_episode() -> None:
 
     with Driver():
 
@@ -41,7 +41,7 @@ def update_test_episode():
 
 
 # Checks if the current date in JST is after the end date in TEST_EPISODE
-def need_update_test_episode():
+def need_update_test_episode() -> bool:
 
     current_date = f"{datetime.now(pytz.timezone('Japan')):%m-%dT%H:%M}"
     end_date = format_test_episode_end_date()
@@ -50,7 +50,7 @@ def need_update_test_episode():
 
 
 # Formats end date in TEST_EPISODE to MM-DDTHH:MM
-def format_test_episode_end_date():
+def format_test_episode_end_date() -> str:
 
     match = re.search(Tver.TEST_EPISODE_END_DATETIME_REGEX, Tver.TEST_EPISODE["valid"]["end"])
     month = match.group(1).zfill(2)
