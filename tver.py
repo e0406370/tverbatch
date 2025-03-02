@@ -139,7 +139,9 @@ if __name__ == "__main__":
         Logger.info(Messages.USAGE)
         exit_script()
 
-    links = validate_links(sys.argv[1:])
+    skip_filter = "-f" not in sys.argv
+
+    links = validate_links([arg for arg in sys.argv[1:] if arg != "-f"])
 
     if not links.episodes and not links.series:
         Logger.warn(Messages.WARN_NO_VALID_LINKS)
@@ -159,7 +161,7 @@ if __name__ == "__main__":
             for series in links.series:
                 Logger.info(Messages.PROCESS_SERIES % series)
 
-                if render_tver_series(series):
+                if render_tver_series(series, skip_filter=skip_filter):
                     scrape_tver()
 
     download_tver()
