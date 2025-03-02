@@ -1,4 +1,4 @@
-name: Sequential (1. update, 2. tests)
+name: Sequential (1. health, 2. update, 3. tests)
 
 on:
   workflow_dispatch:
@@ -7,10 +7,16 @@ on:
     - cron: "0 10 * * 6" # attempts to run every Saturday at 6pm SGT
 
 jobs:
+  _run-health-script:
+    name: Check tver.jp is reachable
+    uses: ./.github/workflows/health.yml
+
   _run-update-script:
     name: Update details in TEST_EPISODE
     uses: ./.github/workflows/update.yml
     secrets: inherit
+    needs: _run-health-script
+    if: success()
 
   _run-tests-pytest:
     name: Run tests using Pytest

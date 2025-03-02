@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-update-script:
+  run-health-script:
     runs-on: ubuntu-latest
 
     steps:
