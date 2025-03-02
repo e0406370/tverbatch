@@ -12,8 +12,7 @@ def update_test_episode():
 
     with Driver():
 
-        Driver.get_instance().get(Tver.get_series_url(Tver.TEST_SERIES["valid"]["id"]))
-
+        Driver.access_url(Tver.get_series_url(Tver.TEST_SERIES["valid"]["id"]))
         Driver.wait_element_visible(Locators.EPISODE_ROW)
 
         episode_id = Driver.get_element_attribute(Locators.EPISODE_ROW, "href").partition("episodes/")[2]
