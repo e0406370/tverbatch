@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "ep9jlq0ouu",
-            "title": "#1155「追跡！探偵タクシー２」",
-            "broadcast": "3月1日(土)放送分",
-            "end": "3月8日(土)17:59 終了予定"
+            "id": "epww46q14u",
+            "title": "#1156「石川よるまっしミステリー（前編）」",
+            "broadcast": "3月8日(土)放送分",
+            "end": "3月15日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
