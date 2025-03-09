@@ -1,8 +1,17 @@
+# Python, Pytest cache
 __pycache__
 .pytest_cache
 
-*.json
-*.mp4
+# Environment file
+.env
 
+# Local files
 tver.txt
 /downloads
+
+# yt-dlp related
+*.json
+*.mp4
+*.part
+*.vtt
+*.ytdl
