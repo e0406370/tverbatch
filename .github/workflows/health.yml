@@ -27,4 +27,4 @@ jobs:
       - name: Run the health script
         run: |
           export PYTHONPATH=$GITHUB_WORKSPACE
-          python .github/workflows/health.py
+          python .github/scripts/health.py
