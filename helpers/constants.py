@@ -30,6 +30,10 @@ class Tver:
             "id": "srg9lxbziz", 
             "name": "ドラゴンボールDAIMA"
         },
+        "valid_3": {
+            "id": "srtsxzl3si", 
+            "name": "ドラえもん"
+        },
         "invalid": {
             "id": "sr12345678",
             "name": "invalid"
@@ -38,6 +42,10 @@ class Tver:
             "id": "sr23456789",
             "name": "invalid_2"
         },
+        "invalid_3": {
+            "id": "sr34567890",
+            "name": "invalid_3"
+        },
         "not_airing": {
             "id": "sre9gy29cj",
             "name": "家族ゲーム"
@@ -45,6 +53,10 @@ class Tver:
         "not_airing_2": {
             "id": "srs8ad9qnl",
             "name": "名前をなくした女神"
+        },
+        "not_airing_3": {
+            "id": "srs8ad9qnl",
+            "name": "デジモンゴーストゲーム"
         },
     }
 

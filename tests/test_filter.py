@@ -26,7 +26,7 @@ def test_filter_tver_skipped_by_flag():
 # [filter_tver] Verify filter_tver returns early with message when only default options are present
 def test_filter_tver_default_options_only(caplog):
 
-    series_url = Tver.get_series_url(Tver.TEST_SERIES["valid"]["id"])
+    series_url = Tver.get_series_url(Tver.TEST_SERIES["valid_3"]["id"])
     render_tver_series(series_url, skip_filter=False)
 
     captured = caplog.text

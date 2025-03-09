@@ -140,7 +140,6 @@ if __name__ == "__main__":
         exit_script()
 
     skip_filter = "-f" not in sys.argv
-
     links = validate_links([arg for arg in sys.argv[1:] if arg != "-f"])
 
     if not links.episodes and not links.series:
