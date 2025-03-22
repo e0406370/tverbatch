@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "ep9ut6md9a",
-            "title": "#1157「石川よるまっしミステリー（後編）」",
-            "broadcast": "3月15日(土)放送分",
-            "end": "3月22日(土)17:59 終了予定"
+            "id": "epjrwckufn",
+            "title": "R151「風林火山　迷宮の鎧武者　壱（デジタルリマスター）」",
+            "broadcast": "3月22日(土)放送分",
+            "end": "3月29日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
