@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epa2iz1fe6",
-            "title": "R152「風林火山　迷宮の鎧武者　弐（デジタルリマスター）」",
-            "broadcast": "3月29日(土)放送分",
-            "end": "4月5日(土)17:59 終了予定"
+            "id": "epl7kfjisz",
+            "title": "R153「風林火山　陰と雷光の決着（デジタルリマスター）」",
+            "broadcast": "4月5日(土)放送分",
+            "end": "4月12日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
