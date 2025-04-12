@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epl7kfjisz",
-            "title": "R153「風林火山　陰と雷光の決着（デジタルリマスター）」",
-            "broadcast": "4月5日(土)放送分",
-            "end": "4月12日(土)17:59 終了予定"
+            "id": "ep3dg9mlty",
+            "title": "#1158「探偵団と憧れの古民家」",
+            "broadcast": "4月12日(土)放送分",
+            "end": "4月19日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
