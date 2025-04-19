@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "ep3dg9mlty",
-            "title": "#1158「探偵団と憧れの古民家」",
-            "broadcast": "4月12日(土)放送分",
-            "end": "4月19日(土)17:59 終了予定"
+            "id": "epn13ddgpi",
+            "title": "#1159「サヨナラの行方」",
+            "broadcast": "4月19日(土)放送分",
+            "end": "4月26日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
