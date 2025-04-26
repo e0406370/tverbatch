@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epn13ddgpi",
-            "title": "#1159「サヨナラの行方」",
-            "broadcast": "4月19日(土)放送分",
-            "end": "4月26日(土)17:59 終了予定"
+            "id": "ep3sdb6h1k",
+            "title": "#1160「鹿威しが響く刻（トキ）」",
+            "broadcast": "4月26日(土)放送分",
+            "end": "5月3日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
