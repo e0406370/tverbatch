@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "ep3sdb6h1k",
-            "title": "#1160「鹿威しが響く刻（トキ）」",
-            "broadcast": "4月26日(土)放送分",
-            "end": "5月3日(土)17:59 終了予定"
+            "id": "epw5o2xhf1",
+            "title": "#1161「秘密の残像」",
+            "broadcast": "5月3日(土)放送分",
+            "end": "5月10日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
