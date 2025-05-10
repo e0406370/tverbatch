@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epw5o2xhf1",
-            "title": "#1161「秘密の残像」",
-            "broadcast": "5月3日(土)放送分",
-            "end": "5月10日(土)17:59 終了予定"
+            "id": "epoxht55hy",
+            "title": "#1162「歩美の絵日記事件簿５」",
+            "broadcast": "5月10日(土)放送分",
+            "end": "5月17日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
