@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epoxht55hy",
-            "title": "#1162「歩美の絵日記事件簿５」",
-            "broadcast": "5月10日(土)放送分",
-            "end": "5月17日(土)17:59 終了予定"
+            "id": "epcaxmlwuk",
+            "title": "#1163「闇に聞こえる数え歌」",
+            "broadcast": "5月17日(土)放送分",
+            "end": "5月24日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
