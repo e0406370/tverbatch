@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epcaxmlwuk",
-            "title": "#1163「闇に聞こえる数え歌」",
-            "broadcast": "5月17日(土)放送分",
-            "end": "5月24日(土)17:59 終了予定"
+            "id": "epfhl74i1r",
+            "title": "R154「17年前と同じ現場（前編）（デジタルリマスター）」",
+            "broadcast": "5月24日(土)放送分",
+            "end": "5月31日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
