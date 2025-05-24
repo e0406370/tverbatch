@@ -50,5 +50,5 @@ jobs:
             echo "No changes to commit"
           fi
 
-      - name: Push code to tver branch
-        run: git push origin tver
+      - name: Push code
+        run: git push

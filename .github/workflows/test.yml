@@ -30,7 +30,7 @@ jobs:
           sudo apt install -y openvpn openvpn-systemd-resolved
 
       - name: Connect to VPNGate via OpenVPN
-        uses: "kota65535/github-openvpn-connect-action@v2"
+        uses: "kota65535/github-openvpn-connect-action@v3"
         with:
           config_file: ./.github/workflows/vpngate_public-vpn-187.opengw.net_udp_1195.ovpn
           username: ${{ secrets.OVPN_USERNAME }}
