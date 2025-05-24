@@ -29,20 +29,12 @@ jobs:
           sudo apt update
           sudo apt install -y openvpn openvpn-systemd-resolved
 
-      - name: Connect to VPNGate via OpenVPN
-        uses: "kota65535/github-openvpn-connect-action@v3"
-        with:
-          config_file: ./.github/workflows/vpngate_public-vpn-187.opengw.net_udp_1195.ovpn
-          username: ${{ secrets.OVPN_USERNAME }}
-          password: ${{ secrets.OVPN_PASSWORD }}
+      - name: Connect to VPN and run tests
+        run: |
+          sudo openvpn --config ./.github/workflows/vpngate_public-vpn-187.opengw.net_udp_1195.ovpn --auth-user-pass <(echo -e "${{ secrets.OVPN_USERNAME }}\n${{ secrets.OVPN_PASSWORD }}") &
+          sleep 10 # wait for VPN connection to establish
+          coverage run -m pytest -v -s
 
-      - name: Run tests using Pytest
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 15
-          max_attempts: 3
-          retry_on: error
-          command: coverage run -m pytest -v -s
 
       - name: Generate report using Coverage
         run: coverage report -m
