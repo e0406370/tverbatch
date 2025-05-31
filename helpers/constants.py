@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epfhl74i1r",
-            "title": "R154「17年前と同じ現場（前編）（デジタルリマスター）」",
-            "broadcast": "5月24日(土)放送分",
-            "end": "5月31日(土)17:59 終了予定"
+            "id": "epxd8cqpaaa",
+            "title": "R155「17年前と同じ現場（後編）（デジタルリマスター）」",
+            "broadcast": "5月31日(土)放送分",
+            "end": "6月7日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
