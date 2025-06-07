@@ -10,10 +10,10 @@ class Tver:
 
     TEST_EPISODE = {
         "valid": {
-            "id": "epxd8cqpaaa",
-            "title": "R155「17年前と同じ現場（後編）（デジタルリマスター）」",
-            "broadcast": "5月31日(土)放送分",
-            "end": "6月7日(土)17:59 終了予定"
+            "id": "epfshcvik6p",
+            "title": "#1164「17年前の真相　血染めの騎士(ナイト)」",
+            "broadcast": "6月7日(土)放送分",
+            "end": "6月14日(土)17:59 終了予定"
         },
         "invalid": {
             "id": "ep12345678"
